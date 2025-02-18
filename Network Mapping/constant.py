@@ -1,0 +1,11 @@
+words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape", "honeydew", "kiwi", "lemon",
+             "mango", "nectarine", "orange", "papaya", "quince", "raspberry", "strawberry", "tangerine", 
+             "umbrella", "violet", "watermelon", "xylophone", "yogurt", "zebra", "ant", "butterfly", "cat",
+             "dog", "elephant", "fox", "goat", "horse", "iguana", "jellyfish", "kangaroo", "lion", "monkey",
+             "nightingale", "octopus", "penguin", "quail", "rabbit", "snake", "tiger", "urchin", "vulture",
+             "whale", "xenops", "yak", "zebra", "airplane", "bicycle", "car", "drone", "elevator", "ferry",
+             "glider", "helicopter", "icebreaker", "jet", "kayak", "locomotive", "motorcycle", "narrowboat",
+             "oxcart", "parachute", "quadbike", "rocket", "submarine", "tractor", "unicycle", "van", "wagon",
+             "xerox", "yacht", "zeppelin", "atom", "battery", "circuit", "diode", "electron", "fiber", "gauge",
+             "hydrogen", "insulator", "joule", "kilowatt", "laser", "microchip", "neutron", "oscillator", 
+             "photon", "quantum", "resistor", "sensor", "transistor", "ultrasound", "voltage", "watt"]
