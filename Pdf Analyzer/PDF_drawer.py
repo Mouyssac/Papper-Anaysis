@@ -59,10 +59,6 @@ def analyse_pdf(self):
                     block.type = 'sources'
 
 
-
-
-
-
         if not self.analysis_canceled:
             for idx, block in enumerate(self.Block_list):
                 self.Block_list[idx].idx = idx
@@ -78,6 +74,9 @@ def analyse_pdf(self):
             redraw_page(self)
 
             progress_bar_window.destroy()
+
+            # Désactivation du bouton après un certain événement
+            self.btn_extract_text.config(state="enabled")
 
     def on_close():
         self.analysis_canceled = True

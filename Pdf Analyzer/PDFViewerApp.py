@@ -30,14 +30,6 @@ class PDFViewerApp:
         self.outline_listbox.config(xscrollcommand=scroll_x.set)
         scroll_x.pack(side=tk.BOTTOM, fill=tk.X)
 
-
-        
-
-        #self.outline_listbox.bind("<<ListboxSelect>>", self.on_outline_select)
-        
-        # Appelle une fonction pour charger les signets
-        #self.load_outline()
-        
                 
         # Variables to track drag-and-select
         self.drag_start_x = None
@@ -56,20 +48,6 @@ class PDFViewerApp:
         self.canvas = tk.Canvas(self.master)
         self.canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=tk.YES)
 
-        """
-        # Nouveau Frame pour afficher les blocks de la page
-        self.Block_list_frame = tk.Frame(self.master, width=200)
-        self.Block_list_frame.pack(side=tk.LEFT, fill=tk.Y, padx=5, pady=5)
-
-        # Listbox pour afficher les signets
-        self.outline_listbox = tk.Listbox(self.Block_list_frame, width=30)
-        self.outline_listbox.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
-
-        # Configurer le scroll vertical
-        scroll_y = tk.Scrollbar(self.Block_list_frame, orient=tk.VERTICAL, command=self.outline_listbox.yview)
-        self.outline_listbox.config(yscrollcommand=scroll_y.set)
-        scroll_y.pack(side=tk.RIGHT, fill=tk.Y)"""
-
 
         self.btn_prev = ttk.Button(self.master, text="Previous", command=lambda: show_prev_page(self))
         self.btn_prev.pack(side=tk.TOP, padx=10)
@@ -77,10 +55,12 @@ class PDFViewerApp:
         self.btn_next = ttk.Button(self.master, text="Next", command=lambda: show_next_page(self))
         self.btn_next.pack(side=tk.TOP, padx=10)
 
-        self.btn_extract_text = ttk.Button(self.master, text="Extract", command=lambda: extract_text(self))
+        self.btn_extract_text = ttk.Button(self.master, text="AI Analysis", command=lambda: extract_text(self))
         self.btn_extract_text.pack(side=tk.TOP, padx=20)
+        # Désactivation du bouton après un certain événement
+        self.btn_extract_text.config(state="disabled")
 
-        self.btn_analyse = ttk.Button(self.master, text="Analyse", command=lambda: analyse_pdf(self))
+        self.btn_analyse = ttk.Button(self.master, text="Structure Analysis", command=lambda: analyse_pdf(self))
         self.btn_analyse.pack(side=tk.TOP, padx=20)
 
         self.show_red_boxes_var = tk.BooleanVar(value=True)
@@ -103,13 +83,9 @@ class PDFViewerApp:
         self.checkbox_show_dark_blue_frames = ttk.Checkbutton(self.master, text="Show Dark Blue Frames", variable=self.show_dark_blue_frames_var, command=lambda: toggle_boxes(self))
         self.checkbox_show_dark_blue_frames.pack(side=tk.TOP, anchor=tk.W, padx=10)
 
-        """"
-        self.show_hyperlinks_var = tk.BooleanVar(value=False)
-        self.checkbox_hyperlinks_frames = ttk.Checkbutton(self.master, text="Show Hyperlinks", variable=self.show_hyperlinks_var, command=lambda: toggle_boxes(self))
-        self.checkbox_hyperlinks_frames.pack(side=tk.TOP, anchor=tk.W, padx=10)"""
-
-        # Charger les images des icônes de flèches
-        undo_arrow_img = Image.open("C:\\Users\\mouyssac\\Desktop\\Projets\\Paper Mapping\\Pdf Analyzer\\Icons\\undo.png")  # Remplacez par le chemin de votre fichier
+      # Charger les images des icônes de flèches
+        print(self.script_path)
+        undo_arrow_img = Image.open( os.path.join(self.script_path, "Icons\\undo.png") )  # Remplacez par le chemin de votre fichier
         undo_arrow_img = undo_arrow_img.resize((30, 30), Image.Resampling.LANCZOS)
         self.undo_arrow_photo = ImageTk.PhotoImage(undo_arrow_img)
 

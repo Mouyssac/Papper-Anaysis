@@ -115,6 +115,7 @@ def New_file(self):
 		self.pdf_path = pdf_path
 		var_init(self)
 		buttons_config(self,'normal')
+		self.btn_extract_text.config(state="disabled")
 		self.btn_analyse.config(state='normal')
 		self.outline_listbox.delete(0, tk.END)
 

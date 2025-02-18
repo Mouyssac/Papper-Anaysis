@@ -1,4 +1,5 @@
 import copy
+import os
 from Block_class import *
 
 def is_outside_margin ( y0, y1, header_margin, footer_margin):
@@ -76,7 +77,6 @@ def buttons_config(self, state_value):
 
     self.btn_prev.config(state=state_value)
     self.btn_next.config(state=state_value)
-    self.btn_extract_text.config(state=state_value)
     self.btn_undo.config(state=state_value)
 
 
@@ -99,5 +99,6 @@ def var_init(self):
     self.pdf_loaded = False
     self.Hypertext_list = []
     self.outline_list = []
+    self.script_path = os.path.dirname(os.path.abspath(__file__))
 
 

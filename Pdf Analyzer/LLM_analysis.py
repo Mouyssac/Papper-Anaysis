@@ -135,7 +135,7 @@ def analyse_LLM(article_text):
     time_stop = time.time()
     print(f"\nTime needed : {time_stop - time_start:.2f}\n")
 
-
+    #%% Analyse des mots clefs
 
     # Texte à traiter
     text = [article_text]
@@ -147,6 +147,18 @@ def analyse_LLM(article_text):
     # Extraction des mots-clés
     keywords = vectorizer.get_feature_names_out()
 
+        # Liste des mots à blacklist
+    blacklist = ["al", "at al", "al.", "et al.", "a", "an", "the", "in", "on", "and", "but", "or", "for", "nor", "so", "to", "of", "with", 
+    "about", "as", "as well as", "in conclusion", "on the other hand", "in addition", "however", 
+    "thus", "therefore", "study", "research", "paper", "article", "result", "analysis", "method", 
+    "methodology", "experiment", "data", "discussion", "finding", "conclusion", "approach", "review", 
+    "summary", "also", "more", "some", "many", "much", "most", "few", "several", "is", "are", 
+    "was", "were", "be", "being", "been", "i.e.", "e.g.", "et al.", "AI", "ML", "NLP", "GPU", "USA"
+    ]
+
+    # Filtrage des mots
+    filtered_words = [word for word in keywords if word not in blacklist]
+
     # Affichage des mots-clés
     print(f"Keywords detected with Tfid algorithm: \n\n{keywords}\n")
 
@@ -154,7 +166,8 @@ def analyse_LLM(article_text):
     lemmatizer = WordNetLemmatizer()
 
     # Appliquer le nettoyage
-    filtered_keywords = (clean_keywords(lemmatizer, keywords))
+    #filtered_keywords = (clean_keywords(lemmatizer, keywords))
+    filtered_keywords = keywords
 
     # Filtrer pour ne garder que les formes singulières
     unique_keywords = list(set(lemmatizer.lemmatize(word) for word in filtered_keywords))

@@ -267,7 +267,7 @@ def extract_text_from_block(block):
         return ""
     
 
-def extract_text(self,text="texte de test", folder_path="C:\\Users\\Mouyssac\\Desktop\\Projets_perso\\papper mapping tests\\Text_Extract", file_name="extracted_text.txt"):
+def extract_text(self,text="texte de test", folder_path = None):
     """
     Extrait du texte, le sauvegarde dans un fichier texte dans un dossier spécifique, puis l'ouvre.
 
@@ -275,14 +275,16 @@ def extract_text(self,text="texte de test", folder_path="C:\\Users\\Mouyssac\\De
     :param folder_path: Le dossier où sauvegarder le fichier.
     :param file_name: Le nom du fichier texte à créer.
     """
-    
-    # Vérifier si le dossier existe, sinon le créer
-    if not os.path.exists(folder_path):
-        os.makedirs(folder_path)
-    
-    # Construire le chemin complet du fichier
-    file_path = os.path.join(folder_path, file_name)
+    file_name = "extracted_text.txt"
 
+    if folder_path  is None:
+        folder_path =os.path.join(self.script_path, "Var")
+    
+    if not os.path.exists(folder_path):
+        os.makedirs(folder_path)  # Crée le dossier s'il n'existe pas
+    
+    file_path = os.path.join(folder_path,file_name)
+    
     # Variable pour stocker le texte extrait
     extracted_text = ""
    
@@ -306,7 +308,7 @@ def extract_text(self,text="texte de test", folder_path="C:\\Users\\Mouyssac\\De
             if block.outline_level > 0: 
                 extracted_text = extracted_text + "\n"
 
-     # Créer et écrire dans le fichier texte
+    # Créer et écrire dans le fichier texte
     with open(file_path, "w", encoding="utf-8") as file:
         file.write(extracted_text)
 
